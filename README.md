@@ -1,4 +1,4 @@
-# [Measurement Score-Based Diffusion Models]
+# Measurement Score-Based Diffusion Model
 
 ![cover-img](./figures/cover.png)
 
