@@ -9,7 +9,7 @@ Diffusion models are widely used in applications ranging from image generation t
 
 ### 1) Virtual environment setup
 ```
-cd MSM
+cd msm2025
 
 conda create -n MSM python=3.9.19
 
@@ -39,9 +39,8 @@ Save models to `./pretrained_models`.
 
 | Dataset                           | Usage                        | Data Path                        |
 |-----------------------------------|------------------------------|----------------------------------------------|
-| FastMRI Training Demo Sample      | For generation               | [Download Link](https://drive.google.com/drive/u/1/folders/13tohHufSniLRvsO_Yc7CFFM4lzH3KTT-) |
-| FastMRI Test Sample               | For solving inverse problems | [Download Link](https://drive.google.com/drive/u/1/folders/13tohHufSniLRvsO_Yc7CFFM4lzH3KTT-) |
-| FFHQ Test Sample                  | For solving inverse problems | MSM/datasets/ffhq_samples|
+| FastMRI Training & Test Demo Sample    | For generation & solving inverse problems               | [Download Link](https://drive.google.com/drive/u/1/folders/13tohHufSniLRvsO_Yc7CFFM4lzH3KTT-). Save in msm2025/datasets/fmri_samples |
+| FFHQ Test Sample                  | For solving inverse problems | msm2025/datasets/ffhq_samples|
 
 ```diff
 ! Demo data is only for academic purposes, and if full fastMRI data is needed, please refer https://fastmri.med.nyu.edu/
@@ -79,6 +78,7 @@ Save models to `./pretrained_models`.
 
 - **FastMRI 256 X 256**:
   - `configs/inverseproblem/fmri_CSMRI4_msm_R4_noise0_0_img256.yaml`
+  - `configs/inverseproblem/fmri_CSMRI4_msm_R4_noise0_1_img256.yaml`
 
 ### 2) Open `yaml` file and customize `# CUSTOMIZE`
 
