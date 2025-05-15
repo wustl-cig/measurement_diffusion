@@ -1,0 +1,50 @@
+setting:
+  save_dir: experiment                                                          # Attention 1: saving folder name
+  pretrained_model_dir: ''                                                      
+  dataset_dir: 'datasets/ffhq_samples'                                          # Attention 2: path for the dataset 
+  is_demo: True
+  save_interval: 50000                                                          # Save the model every 50000 iterations    
+  log_interval: 1000                                                            # Log the training process every 1000 iterations
+  batch_size: 2                                                                 # Attention 3: batch size for training (Set 1 for sampling)
+  microbatch: 2                                                                 # Attention 4: microbatch size for splitting the batch to fit GPU memory constraints.
+  num_workers: 1
+
+train:
+  lr: 0.00001
+  training_data_noiselevel: 0.0
+  tau_SURE: 0.0
+  lr_SURE: 0.0
+
+dataset:
+  dataset_name: ffhq
+  mask_pattern: "random_box"                                                    # ['randomly_cartesian', 'uniformly_cartesian']
+  acceleration_rate: 0.4
+
+vp_diffusion:
+  diffusion_predtype: epsilon
+  latent_type: measurement_space                                                # [image_space, measurement_space]
+  noise_schedule: linear
+  diffusion_model_type: measurement_diffusion                                   # [unconditional_diffusion, measurement_diffusion]
+  image_size: 128
+  learn_sigma: False
+  in_channels: 3
+  cond_channels: 0
+  num_channels: 128
+  num_res_blocks: 2
+  channel_mult: ""
+  class_cond: False
+  use_checkpoint: False
+  attention_resolutions: "32,16,8"
+  num_heads: 4
+  num_head_channels: 64
+  num_heads_upsample: -1
+  use_scale_shift_norm: True
+  dropout: 0.0
+  resblock_updown: True
+  use_fp16: False
+  use_new_attention_order: False
+  model_path: ''
+  use_ddim: True
+  timestep_respacing: 'ddim200'
+  clip_denoised: True
+

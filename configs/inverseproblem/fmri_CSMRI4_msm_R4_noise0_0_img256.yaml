@@ -1,0 +1,109 @@
+setting:
+  save_dir: experiment                                                          # Attention 1: saving folder name
+  pretrained_model_dir: 'pretrained_models/fmri_msm_R4_noise0_0_img256.pt'      # Attention 2: path for the pretrained model
+  dataset_dir: 'datasets/fmri_samples'                                          # Attention 3: path for the dataset      
+  is_demo: True
+  solve_inverse_problem: True
+  inverse_problem_type: fastmri_reconstruction
+  inverse_problem_solver: measurement_diffusion
+  measurement_noise_level: 0.01                                                 # measurement noise level for the inverse problem
+  stepsize_likelihood: 2.                                                       # Attention 4: stepsize for the likelihood term         
+  stochastic_loop: 3                                                            # Attention 5: the number of stochastic loops for MSM
+  num_samples: 5                                                                # The number of samples to be reconstructed
+  batch_size: 1
+  num_workers: 1
+
+dataset:
+  dataset_name: fastmri
+  mask_pattern: "randomly_cartesian"                                            # ['randomly_cartesian', 'uniformly_cartesian']
+  acceleration_rate: 4                                                          # acceleration rate R for the measurement diffusion
+  inv_problem_acceleration_rate: 4                                              # acceleration rate R for the inverse problem
+
+vp_diffusion:
+  diffusion_predtype: pred_xstart                                               # While model used in MSM framework predicts $\epsilon$, this configuration should be set pred_xstart.
+  latent_type: measurement_space                                                # [image_space, measurement_space]
+  noise_schedule: linear
+  diffusion_model_type: measurement_diffusion                                   # [unconditional_diffusion, measurement_diffusion]
+  image_size: 256
+  microbatch: -1
+  learn_sigma: False
+  in_channels: 2
+  cond_channels: 0
+  num_channels: 128
+  num_res_blocks: 2
+  channel_mult: ""
+  class_cond: False
+  use_checkpoint: False
+  attention_resolutions: "32,16,8"
+  num_heads: 4
+  num_head_channels: 64
+  num_heads_upsample: -1
+  use_scale_shift_norm: True
+  dropout: 0.0
+  resblock_updown: True
+  use_fp16: False
+  use_new_attention_order: False
+  use_ddim: True
+  ddim_eta: 0.85
+  timestep_respacing: 'ddim200'
+  clip_denoised: False
+
+inverse_problems:
+  fastmri_reconstruction:
+    name: fastmri_reconstruction
+
+  gaussian_blur:
+    name: gaussian_blur
+    kernel_size: 61
+    intensity: 3.0
+
+  box_inpainting:
+    name: inpainting
+    mask_opt:
+      mask_type: box
+      mask_len_range: !!python/tuple [128, 129]  # for box
+      #mask_prob_range: !!python/tuple [0.3, 0.7]  # for random
+      image_size: 256
+  
+  random_inpainting:
+    name: inpainting
+    mask_opt:
+      mask_type: random
+      mask_prob_range: !!python/tuple [0.3, 0.7]  # for random
+      image_size: 256
+
+  motion_blur:
+    name: motion_blur
+    kernel_size: 61
+    intensity: 0.5
+
+  super_resolution: 
+    name: super_resolution
+    in_shape: !!python/tuple [1, 3, 256, 256]
+    scale_factor: 4
+
+inverse_problem_solvers:
+  dps:
+    method: dps
+    params:
+      scale: 1.1
+  dds:
+    method: dds
+    params:
+      gamma: 0.95
+      CG_iters: 5
+  ddnm:
+      method: ddnm
+      params:
+        gamma: 0
+
+  measurement_diffusion:
+      method: measurement_diffusion
+      params:
+        num_stochastics: -1
+
+
+
+train:
+  lr: 0.0001
+  training_data_noiselevel: 0.   
