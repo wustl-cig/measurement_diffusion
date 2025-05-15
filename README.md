@@ -9,7 +9,7 @@ Diffusion models are widely used in applications ranging from image generation t
 
 ### 1) Virtual environment setup
 ```
-cd msm2025
+cd MSM
 
 conda create -n MSM python=3.9.19
 
@@ -41,7 +41,7 @@ Save models to `./pretrained_models`.
 |-----------------------------------|------------------------------|----------------------------------------------|
 | FastMRI Training Demo Sample      | For generation               | [Download Link](https://drive.google.com/drive/u/1/folders/13tohHufSniLRvsO_Yc7CFFM4lzH3KTT-) |
 | FastMRI Test Sample               | For solving inverse problems | [Download Link](https://drive.google.com/drive/u/1/folders/13tohHufSniLRvsO_Yc7CFFM4lzH3KTT-) |
-| FFHQ Test Sample                  | For solving inverse problems | msm2025/datasets/ffhq_samples|
+| FFHQ Test Sample                  | For solving inverse problems | MSM/datasets/ffhq_samples|
 
 ```diff
 ! Demo data is only for academic purposes, and if full fastMRI data is needed, please refer https://fastmri.med.nyu.edu/
