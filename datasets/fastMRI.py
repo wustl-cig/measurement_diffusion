@@ -360,30 +360,13 @@ def load_real_dataset_handle(
     if not smps_hat_method == 'eps':
         raise NotImplementedError('smps_hat_method can only be eps now, but found %s' % smps_hat_method)
 
-    root_path = os.path.join(root, 'real')
-    check_and_mkdir(root_path)
-
-    y_h5 = os.path.join(root, INDEX2FILE(idx) + '.h5') if is_demo == False else os.path.join(root, DEMO_INDEX2FILE(idx) + '.h5')
-
-    meas_path = os.path.join(root_path, "acceleration_rate_%d_smps_hat_method_%s" % (
-        acceleration_rate, smps_hat_method))
-    check_and_mkdir(meas_path)
-
-    x_hat_path = os.path.join(meas_path, 'x_hat')
-    check_and_mkdir(x_hat_path)
+    x_hat_path = os.path.join(root, 'x_hat')
 
     x_hat_h5 = os.path.join(x_hat_path, INDEX2FILE(idx) + '.h5') if is_demo == False else os.path.join(x_hat_path, DEMO_INDEX2FILE(idx) + '.h5')
 
-    smps_hat_path = os.path.join(meas_path, 'smps_hat')
-    check_and_mkdir(smps_hat_path)
+    smps_hat_path = os.path.join(root, 'smps_hat')
 
     smps_hat_h5 = os.path.join(smps_hat_path, INDEX2FILE(idx) + '.h5') if is_demo == False else os.path.join(smps_hat_path, DEMO_INDEX2FILE(idx) + '.h5')
-    
-
-    mask_path = os.path.join(meas_path, 'mask')
-    check_and_mkdir(mask_path)
-
-    mask_h5 = os.path.join(mask_path, INDEX2FILE(idx) + '.h5') if is_demo == False else os.path.join(mask_path, DEMO_INDEX2FILE(idx) + '.h5')
 
     ret = {
         'x_hat': x_hat_h5
@@ -391,8 +374,6 @@ def load_real_dataset_handle(
     if is_return_y_smps_hat:
         ret.update({
             'smps_hat': smps_hat_h5,
-            'y': y_h5,
-            'mask': mask_h5
         })
 
     return ret
