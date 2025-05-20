@@ -1,4 +1,6 @@
-# Measurement Score-Based Diffusion Model
+# [Measurement Score-Based Diffusion Model](https://arxiv.org/abs/2505.11853)
+
+[[Preprint]](https://arxiv.org/abs/2505.11853)
 
 ![cover-img](./figures/cover.png)
 
