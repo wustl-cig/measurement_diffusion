@@ -11,7 +11,7 @@ Diffusion models are widely used in applications ranging from image generation t
 
 ### 1) Virtual environment setup
 ```
-cd msm2025
+cd measurement_diffusion
 
 conda create -n MSM python=3.9.19
 
