@@ -104,10 +104,10 @@ python first_train.py --diffusion_config configs/{TASK_YAML_FILE_NAME}.yaml    #
 ### 4) Sampling using MSM
 ```
 # For unconditional sampling
-python first_sample.py --diffusion_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_sample.py --task_config configs/generation/fmri_msm_R4_noise0_0_img256.yaml
+python first_sample.py --task_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_sample.py --task_config configs/generation/fmri_msm_R4_noise0_0_img256.yaml
 
 # For solving inverse problem
-python first_sample.py --diffusion_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_sample.py --task_config configs/inverseproblem/fmri_CSMRI4_msm_R4_noise0_0_img256.yaml
+python first_sample.py --task_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_sample.py --task_config configs/inverseproblem/fmri_CSMRI4_msm_R4_noise0_0_img256.yaml
 ```
 
 ## Implementation detail
