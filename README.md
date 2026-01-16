@@ -98,7 +98,7 @@ setting:
 ### 3) Training MSM
 ```
 # For training
-python first_train.py --diffusion_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_train.py --task_config configs/train/ffhq_msm_p04_noise0_0_img128.yaml
+python first_train.py --task_config configs/{TASK_YAML_FILE_NAME}.yaml    # example code: python first_train.py --task_config configs/train/ffhq_msm_p04_noise0_0_img128.yaml
 ```
 
 ### 4) Sampling using MSM
